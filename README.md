@@ -111,6 +111,7 @@ Select all three of them and click Add permissions.
 4. Replace the ``obfuscatedClientSecret`` with this value in api.config.js
 
 # Deploy (Vercel)
+0. Replace `clientId` and `obfuscatedClientSecret` in api.config.js with your own. [🤔 How?](https://github.com/TheFlashSpeedster/OneDrive-Index/edit/main/README.md#using-your-own-clientid-and-clientsecret-must-do-this)
 1. Change ``userPrincipleName`` in ``site.config.js`` to your Microsoft account email address.
 2. Change ``baseDirectory`` in ``site.config.js`` to a folder under your OneDrive root directory.
 3. Import to Vercel and add Upstash integration.
