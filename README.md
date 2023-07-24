@@ -1,17 +1,4 @@
-<div align="center">
-  <img src="./public/header.png" alt="onedrive-vercel-index" />
-  <h3><a href="https://drive.swo.moe">onedrive-vercel-index</a></h3>
-  <p><a href="https://ovi.swo.moe/docs/getting-started">Get started</a> · <a href="https://ovi.swo.moe/blog/whats-new">What's new?</a> · <a href="https://ovi.swo.moe/sponsor/ways">Sponsoring</a></p>
-  <p><em>OneDrive public directory listing, powered by Vercel and Next.js</em></p>
-
-  <img src="https://img.shields.io/badge/OneDrive-2C68C3?style=flat&logo=microsoft-onedrive&logoColor=white" alt="OneDrive" />
-  <img src="https://img.shields.io/badge/Next.js-black?style=flat&logo=next.js&logoColor=white" alt="Next.js" />
-  <img src="https://img.shields.io/badge/Vercel-black?style=flat&logo=Vercel&logoColor=white" alt="Vercel" />
-  <a href="https://ovi.swo.moe"><img src="https://img.shields.io/badge/Documentation-black?style=flat&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAABeUlEQVRIie2VwUrDQBCGZ5ZubNmS0Ba9tF6CUqTHpg+g+AhCn8R30DfpM3jRezdHoZJroaBJQ2qgsIEdD7YSsCtJVBTxP87u/t/u7M4swDcLTQNSSseyLFbERCmlPc9LCgF83z/jnE9s294vvk+AJEmesiwbe553awQEQbCXZVnY7/ebjBXa/Ju01jCbzVIA6AwGA7WN1/KT4jg+6vV6TcYYpGlKq9UKiQgAAOr1OnU6HWNKGWPQarWa8/n8GADudwIQ0UJ89QjDEKMoOiEitRm7tm37gnNuPAUiAiJa+VjNNJmIYDgcPiAiAQD4vh9tT1NG5RJdQT8PkFKak/5ZgJTyUgjxPJ1Ob4josArAeMmWZYHrulftdhvX6/X5YrEwPtFKgG63C7ApxEajga7rVvH/BZf8D/hjACJSVRpabj1su+9OgBAiiOM41VqXNtdaw3K5TIUQQT7+rjqllKec84njOAdlAEmSPCqlxqPR6O5DQA70JZ/+t+sFAb2R22dSZ7wAAAAASUVORK5CYII=" alt="Documentation" /></a>
-  <a href="https://github.com/spencerwooo/onedrive-vercel-index/discussions"><img src="https://img.shields.io/github/discussions/spencerwooo/onedrive-vercel-index?color=CF2B5B&labelColor=black&logo=github" alt="GitHub Discussions" /></a>
-</div>
-
-## TL;DR
+# OneDrive Index
 
 Showcase, share, preview, and download files inside *your* OneDrive with onedrive-vercel-index -
 
@@ -21,24 +8,6 @@ Showcase, share, preview, and download files inside *your* OneDrive with onedriv
 - Highly customisable ⚒️
 
 🍌 More importantly, we are pretty (●'◡'●)
-
-## Quick start
-
-🚀 Quick start: [Getting started](https://ovi.swo.moe/docs/getting-started).
-
-## Discussion
-
-Please go to our [discussion forum](https://github.com/spencerwooo/onedrive-vercel-index/discussions) for general questions and FAQs, **issues are for bug reports and bug reports only.** Feature requests may or may not be ignored, as [I (@spencerwooo)](https://spencerwoo.com) am the only one maintaining the project, so **I only prioritise features that I use.**
-
-*If you happen to like this project, please give it a star!* :3
-
-*If you really, really like this project, please send money! -> [Sponsors 🤑 and donations 💰](https://ovi.swo.moe/sponsor/ways)*
-
-## Demo
-
-Live demo at [Spencer's OneDrive](https://drive.swo.moe).
-
-![demo](./public/demo.png)
 
 ## Features
 
@@ -109,40 +78,42 @@ Live demo at [Spencer's OneDrive](https://drive.swo.moe).
 - Direct raw-file serving and hosting ...
 - Full dark mode support, style and website customisations ...
 
-> **Note**: This project is focused on showcasing and providing a way for others to download files from your OneDrive. Emphasis on **free** and **serverless**. If you have your own server / need WebDAV / use cloud providers other than OneDrive, checkout [alist](https://github.com/alist-org/alist).
+# Using your own clientId and clientSecret (Must Do This)
 
-## Documentation
+## Client ID
+1. Go Here: https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade
+2. Login with your Microsoft account, select New registration.
+3. Enter the Name for your blade app, my-onedrive-vercel-index for example.
+4. Set Supported account types to:
+``Accounts in any organizational directory (Any Azure AD directory - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)``
+5. Set Redirect URI (optional) to Web (the multiselect dropdown) and ``http://localhost`` (the URL).
+6. Click Register.
+Your ``Application (client) ID`` is the ``clientId`` to appear in your api.config.js
 
-Documentation is hosted at [ovi.swo.moe](https://ovi.swo.moe/).
+## Client Secret (for generating obfuscatedClientSecret)
+1. Your client secret needs to be generated manually:
+2. Open Certificates & secrets panel.
+3. Click New client secret.
+4. Create a new secret with description client_secret.
+5. Set Expires to Custom.
+6. Change Start and End to the longest available time duration available.
+7. Open API permissions, select Microsoft Graph, select Delegated permissions, and search for:
+- User.Read (this should already be available)
+- Files.Read.All
+- offline_access
+Select all three of them and click Add permissions.
 
-- [How can I get started and deploy?](https://ovi.swo.moe/docs/getting-started)
-- [How can I configure ... ?](https://ovi.swo.moe/docs/custom-configs)
-- Where is feature ... ?
-  - [Docs - Password protected folders](https://ovi.swo.moe/docs/features/protected-folders)
-  - [Docs - Multi-file and folder download](https://ovi.swo.moe/docs/features/multi-file-folder-download)
-  - [Docs - Hosting files (images) directly](https://ovi.swo.moe/docs/features/hosting-images-directly)
-  - [Docs - Search for files and folders](https://ovi.swo.moe/docs/features/search-for-files-and-folders)
-  - [Docs - Load video subtitles](https://ovi.swo.moe/docs/features/load-video-subtitles)
-- [I deployed this before, how can I upgrade to the latest version?](https://ovi.swo.moe/docs/migration/updating-to-latest-version)
-- [I was here before 2022, how can I migrate to the new version?](https://ovi.swo.moe/docs/migration/if-you-deployed-before-2022)
-- [I got a problem during deployment ...](https://ovi.swo.moe/docs/faqs/error-on-deployment)
-- I didn't find a solution / My problem is unique? [Find help in discussion forum](https://github.com/spencerwooo/onedrive-vercel-index/discussions).
+## obfuscatedClientSecret
+1. Copy client secret value
+2. Obfuscate your client secret: https://ovi.swo.moe/docs/advanced#modify-configs-in-apiconfigjs
+3. You should get an obfuscated client secret which looks like:
+``U2FsdGVkX1830zo3/pFDqaBCVBb37iLw3WnBDWGF9GIB2f4apzv0roemp8Y+iIxI3Ih5ecyukqELQEGzZlYiWg==``
+4. Replace the ``obfuscatedClientSecret`` with this value in api.config.js
 
-## Server-*less* (free)?
+# Deploy (Vercel)
+1. Change ``userPrincipleName`` in ``site.config.js`` to your Microsoft account email address.
+2. Change ``baseDirectory`` in ``site.config.js`` to a folder under your OneDrive root directory.
+3. Import to Vercel and add Upstash integration.
+4. Trigger a redeploy, and profit. 🎉
 
-Yes! Completely free with no backend server what-so-ever. (Well, we use Redis, but that's free to some extent also.)
-
-## Sponsors and donations
-
-Open-source is hard! If you happen to like this project and want me to keep going, please consider sponsoring me or providing a single donation! Thanks for all the love and support!
-
-[🧸 Please donate - 微信/支付宝](https://ovi.swo.moe/sponsor/ways) · [Patreon](https://www.patreon.com/spencerwoo) · [爱发电](https://afdian.net/@spencerwoo)
-
-## License
-
-[MIT](LICENSE)
-
-<div align="center">
-  <img src="./public/footer.png" />
-  <em>made with ❤️ by <a href="https://spencerwoo.com">spencer woo</a></em>
-</div>
+# Modified By ➳⚡️𝔗𝔥𝔢 𝔉𝔩𝔞𝔰𝔥⚡️༻
