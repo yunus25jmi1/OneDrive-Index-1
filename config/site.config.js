@@ -42,7 +42,7 @@ module.exports = {
 
   // [OPTIONAL] This is where you specify the folders that are password protected. It is an array of paths pointing to all
   // the directories in which you have .password set. Check the documentation for details.
-  protectedRoutes: ['/all-folder', '/Cars Collection (2006-2017) 1080p BluRay x264 Dual Audio [Hindi DD 5.1 - English DD 5.1] ESub [MW] ' , 'GNDU-DOCUMENT'],
+  protectedRoutes: ['/all-folder', '/Other' , 'GNDU-DOCUMENT'],
 
   // [OPTIONAL] Use "" here if you want to remove this email address from the nav bar.
   email: 'mailto:admin@yunus.eu.org',
